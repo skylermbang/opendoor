@@ -1,0 +1,14 @@
+[
+  {
+    "userId": 1,
+    "email": "test@email.com",
+    "nickname": "Test",
+    "password": "4d4f26369171994f3a46776ee2d88494fb9955800a5bb6261c016c4bb9f30b56"
+  },
+  {
+    "userId": 2,
+    "email": "test@test.com",
+    "nickname": "test",
+    "password": "37268335dd6931045bdcdf92623ff819a64244b53d0e746d438797349d4da578"
+  }
+]
