@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>OpenDoor E-learning</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+       <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery.js"></script>
+        <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+  <!--Font awesome-->
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css">
+  <!--FONTS-->
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Arvo:700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+
+
+    <script type="text/javascript">
+        $(function() {
+  $('a[href*=#]').on('click', function(e) {
+    e.preventDefault();
+    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top}, 500, 'linear');
+  });
+});
+    ImageArrayFeaturea = new Array();
+    ImageArrayFeaturea[0] = 'roleplay1.jpg';
+    ImageArrayFeaturea[1] = 'roleplay2.jpg';
+    ImageArrayFeaturea[2] = 'roleplay3.jpg';
+    ImageArrayFeaturea[3] = 'roleplay4.jpg';
+    ImageArrayFeaturea[4] = 'roleplay5.jpg';
+    ImageArrayFeatureb = new Array();
+    ImageArrayFeatureb[0] = 'solutionhint1.jpg';
+    ImageArrayFeatureb[1] = 'solutionhint2.jpg';
+    ImageArrayFeatureb[2] = 'solutionhint3.jpg';
+    ImageArrayFeatureb[3] = 'solutionhint4.jpg';
+    ImageArrayFeatureb[4] = 'solutionhint5.jpg';
+    ImageArrayFeatureb[5] = 'solutionhint6.jpg';
+    ImageArrayFeatureb[6] = 'solutionhint7.jpg';
+    ImageArrayFeatureb[7] = 'solutionhint8.jpg';
+    ImageArrayFeatureb[8] = 'solutionhint9.jpg';
+    ImageArrayFeatureb[9] = 'solutionhint10.jpg';
+    ImageArrayUser = new Array();
+    ImageArrayUser[0] = 'customer1.jpg';
+    ImageArrayUser[1] = 'customer2.jpg';
+    ImageArrayUser[2] = 'customer3.jpg';
+    ImageArrayUser[3] = 'customer4.jpg';
+    ImageArrayUser[4] = 'customer5.jpg';
+    ImageArrayUser[5] = 'customer6.jpg';
+    ImageArrayUser[6] = 'customer7.jpg';
+    ImageArrayUser[7] = 'customer8.jpg';
+    ImageArrayUser[8] = 'customer9.jpg';
+    ImageArrayUser[9] = 'customer10.jpg';
+    ImageArraypro = new Array();
+    ImageArraypro[0] = 'problemhint1.jpg';
+    ImageArraypro[1] = 'problemhint2.jpg';
+    ImageArraypro[2] = 'problemhint3.jpg';
+    ImageArraypro[3] = 'problemhint4.jpg';
+    ImageArraypro[4] = 'problemhint5.jpg';
+
+/*customer*/
+let cards = [];
+
+function getRandomImageUser() {
+    var numUser = Math.floor( Math.random() * 9);
+    var imgUser = ImageArrayUser[numUser];
+
+    cards.push(imgUser)
+     document.getElementById("randImageUser").innerHTML = ('<img src="' + '../static/customer/' + imgUser + '" style=" height: 25vh;width: 30vw;border-radius: 50px; position: center" >')
+}
+/*roleplay*/
+function getRandomImageFa() {
+    var numFa = Math.floor( Math.random() * 4);
+    var imgFa = ImageArrayFeaturea[numFa];
+    cards.push(imgFa)
+     document.getElementById("randImageFeaturea").innerHTML = ('<img src="' + '../static/roleplay/' + imgFa + '" style="height: 25vh;width: 30vw;border-radius: 50px;position: center" >')
+}
+function getRandompro() {
+    var numS = Math.floor(Math.random() * 4);
+    var imgS = ImageArraypro[numS];
+    cards.push(imgS)
+    document.getElementById("randImageS").innerHTML = ('<img src="' + '../static/problemhint/' + imgS + '" style=" height: 25vh;width: 30vw;border-radius: 50px;position: center" >')
+}
+/*solution*/
+function getRandomImageFb() {
+    var numFb = Math.floor( Math.random() * 9);
+    var imgFb = ImageArrayFeatureb[numFb];
+    cards.push(imgFb)
+     document.getElementById("randImageFb").innerHTML = ('<img src="' + '../static/solutionhint/' + imgFb + '" style="height: 25vh;width: 30vw;border-radius: 50px; position: center" >')
+}
+
+
+
+function save_cards() {
+  console.log("checking")
+  //console.log(cards)
+
+  const rp= cards[0]
+  const customer= cards[1]
+  const problem = cards[2]
+  const solution = cards[3]
+
+  console.log(rp, customer, problem, solution)
+
+                $.ajax({
+                    type: "POST",
+                    url: "/cards",
+                    data: {
+                      rp_give: rp,
+                      customer_give: customer,
+                      problem_give: problem,
+                      solution_give: solution
+
+                    
+                    },
+                    success: function (response) {
+                        alert(response["msg"]);
+                        window.location.reload();
+                    }
+                })
+            }
+
+    </script>
+
+
+</head>
+<style>
+
+
+
+    @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+* {
+  margin: 0;
+  padding: 0;
+}
+html, body {
+  height: 100%;
+    color: #000;
+}
+    .nav{
+        border: transparent;
+        font-size: 2vw;
+        border-radius: 25px;
+        line-height: 40px;
+        padding: 8px;
+        position: absolute;
+        background: rgba(243, 216, 207, 0.32);
+        top: 0;
+        left: 0;
+        margin-left: -45vw;
+        margin-top: -95vh;
+    }
+section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+section::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 80%;
+    z-index: -1;
+}
+section h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #000;
+  font : normal 300 64px/1 'Josefin Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+
+section a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb04 2s infinite;
+  animation: sdb04 2s infinite;
+  box-sizing: border-box;
+    z-index: 10;
+}
+@-webkit-keyframes sdb04 {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+  }
+}
+@keyframes sdb04 {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+  20% {
+    transform: rotate(-45deg) translate(-10px, 10px);
+  }
+  40% {
+    transform: rotate(-45deg) translate(0, 0);
+  }
+}
+
+
+
+#section06 {
+  position: relative;
+  width: 100%;
+  height: 200vh;
+    background: rgba(185, 122, 181, 0.35) center center / cover no-repeat;
+
+}
+
+
+#thanks {
+  background-color: rgba(49, 51, 53, 0.29);
+}
+#thanks::after {
+  content: none;
+}
+#thanks div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#thanks h2 {
+  margin-bottom: 60px;
+  color: #333;
+  font : normal 300 64px/1 'Josefin Sans', sans-serif;
+  text-align: center;
+  white-space: nowrap;
+}
+#thanks p {
+  color: #333;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+}
+#thanks p a {
+  color: #333;
+  text-decoration: none;
+  transition: color .3s;
+}
+#thanks p a:hover {
+  color: #888;
+}
+.demo a {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  z-index: 2;
+  display: inline-block;
+  -webkit-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  color: #000;
+  font : normal 400 20px/1 'Josefin Sans', sans-serif;
+  letter-spacing: .1em;
+  text-decoration: none;
+  transition: opacity .3s;
+}
+.demo a:hover {
+  opacity: .5;
+}
+.agora{
+    left:41%;
+    top:5%;
+    font: normal 10 50px/5 'Josefin Sans', sans-serif;
+    position: absolute;
+    border-style:solid;
+    border-radius: 6px;
+    border-width:4px;
+    width:300px;
+    height: 70px;
+    line-height:0;
+    padding-top: 2px;
+    padding-bottom:25px;
+}
+.agora p, .agora b{
+    line-height: 1.6;
+     width:300px;
+     height: 70px;
+    left:0;
+    position: relative;
+}
+        #section02  {
+              position:relative;
+            height: 100vh;
+            z-index: 3;
+            color: #000;
+            text-align: center;
+            padding-top: 1px;
+            background: rgba(238, 95, 91, 0.07);
+          }
+
+
+.container{
+    width: 90vw;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.container .card1{
+    position: relative;
+    cursor: pointer;
+}
+
+.container .card1 .face{
+    width: 25vw;
+    height: 30vh;
+    transition: 0.5s;
+}
+
+.container .card1 .face.face1{
+    position: relative;
+    background: rgba(51, 51, 51, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transform: translateY(15vh);
+    overflow: hidden;
+}
+
+.container .card1:hover .face.face1{
+    background: rgba(255, 0, 87, 0.45);
+    transform: translateY(0);
+}
+
+.container .card1 .face.face1 .content{
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+.container .card1:hover .face.face1 .content{
+    opacity: 1;
+}
+
+.container .card1 .face.face1 .content img{
+    max-width: 100px;
+}
+
+.container .card1 .face.face1 .content h3{
+    margin: 10px 0 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.container .card1 .face.face2{
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+    transform: translateY(-15vh);
+}
+
+.container .card1:hover .face.face2{
+    transform: translateY(0);
+}
+
+.container .card1 .face.face2 .content p{
+    margin: 0;
+    padding: 0;
+    line-height: 20px;
+    max-height: 30vh;
+    overflow: hidden;
+}
+
+.container .card1 .face.face2 .content a{
+    margin: 15px 0 0;
+    display:  inline-block;
+    text-decoration: none;
+    font-weight: 900;
+    color: #333;
+    padding: 5px;
+    border: 1px solid #333;
+}
+
+.container .card1 .face.face2 .content a:hover{
+    background: #333;
+    color: #fff;
+}
+ #section03 div {
+              position: absolute;
+    z-index: 3;
+              text-align: center;
+                 font-size:30px;
+                 left: 18%;
+                 top:20px;
+                 color:white;
+                 font-weight:40;
+                 align-content: center;
+                 border-style:solid;
+                 border-radius: 6px;
+                 border-width:4px;
+                 width: 1000px;
+                 height: 70px;
+                 padding-top: 2px;
+                 padding-bottom:23px;
+
+
+          }
+ .cardone{
+     position: absolute;
+     margin-left: 20px;
+     top:80%;
+     left: 25%;
+     background: url('../static/pexels-ben-mack-6775241.jpg');
+     background-size: 300% 300%;
+     background-position:70% 70%;
+
+ }
+ .cardtwo{
+     position: absolute;
+     margin-right: 20px;
+     top:80%;
+     left: 95%;
+     background: url('../static/pexels-jim-1557238.jpg');
+     background-size: 300% 300%
+
+ }
+ .cardthree{
+  position: absolute;
+     margin-left: -33.5vw;
+     margin-bottom: 20px;
+     top: 250%;
+     left: 25%;
+     background: url('../static/pexels-jim-1557238.jpg');
+     background-size: 300% 300%
+
+ }
+ .cardfour{
+     position: absolute;
+     top: 250%;
+     left: 95%;
+     margin-left: -35vw;
+     background: url('../static/pexels-eberhard-grossgasteiger-2088170.jpg');
+     background-size: 300% 300%;
+     background-position:70% 70%;
+ }
+
+    label {
+      -webkit-perspective: 1000px;
+      perspective: 1000px;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      display: block;
+      width: 500px;
+      height: 200px;
+      position: absolute;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+    }
+
+    .card {
+      position: relative;
+      height: 25vh;
+      width: 30vw;
+      -webkit-transform-style: preserve-3d;
+      transform-style: preserve-3d;
+      -webkit-transition: all 600ms;
+      transition: all 600ms;
+      z-index: 20;
+        border-radius: 50px;
+    }
+
+    .card div {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      text-align: center;
+      line-height: 200px;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 50px;
+    }
+
+    .card .back {
+
+      color: #FFF;
+      -webkit-transform: rotateX(180deg);
+      transform: rotateX(180deg);
+         border-radius: 50px;
+    }
+
+    label:hover .card {
+      -webkit-transform: rotateX(20deg);
+      transform: rotateX(20deg);
+      box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
+         border-radius: 50px;
+    }
+
+    input {
+      display: none;
+    }
+
+    :checked + .card {
+      transform: rotateX(180deg);
+      -webkit-transform: rotateX(180deg);
+    }
+
+    label:hover :checked + .card {
+      transform: rotateX(160deg);
+      -webkit-transform: rotateX(160deg);
+      box-shadow: 0 20px 20px rgba(255, 255, 255, 0.2);
+    }
+    .view {
+        float: left;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+        cursor: default;
+         border-radius: 50px;
+        font-size: 2vw;
+
+    }
+    .view .mask, .view .content {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+         border-radius: 50px;
+    }
+    .view img {
+        display: block;
+        position: relative
+        border-radius: 50px;
+    }
+    .view h2 {
+        text-transform: uppercase;
+        color: #fff;
+        text-align: center;
+        position: relative;
+        font-size: 17px;
+        padding: 10px;
+        background: rgba(0, 0, 0, 0.8);
+        margin: 20px 0 0 0
+    }
+    .view p {
+        font-family: Georgia, serif;
+        font-style: italic;
+        font-size: 1vw;
+        position: relative;
+        top:30px;
+        color: #fff;
+        padding: 0px 20px 20px;
+        text-align: center;
+        line-height: 20px;
+
+    }
+    .view-tenth img {
+        transform: scaleY(1);
+        transition: all 0.7s ease-in-out;
+    }
+    .view-tenth .mask {
+        background-color: rgba(255, 231, 179, 0.7);
+        transition: all 0.5s linear;
+
+        opacity: 0;
+    }
+    .view-tenth h2{
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        background: transparent;
+        margin: 20px 40px 0px 40px;
+        transform: scale(0);
+        color: #333;
+        transition: all 0.5s linear;
+        opacity: 0;
+    }
+    .view-tenth p {
+        color: #333;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.5s linear;
+    }
+    .view-tenth a.info {
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.5s linear;
+    }
+    .view-tenth:hover img {
+        transform: scale(10);
+        opacity: 0;
+    }
+    .view-tenth:hover .mask {
+        opacity: 1;
+    }
+    .view-tenth:hover h2,
+    .view-tenth:hover p,
+    .view-tenth:hover a.info{
+        transform: scale(1);
+        opacity: 1;
+    }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.bg {
+  width: 80vw;
+  height: 80vh;
+  top: 0;
+  left: 0;
+  z-index: 1;
+   filter: blur(80px);
+  transform: scale(1.2);
+}
+
+/*--------------------
+Chat
+--------------------*/
+.chat {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 85vh;
+  max-height: 900px;
+  z-index: 2;
+  overflow: hidden;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+/*--------------------
+Chat Title
+--------------------*/
+.chat-title {
+  flex: 0 1 45px;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px 10px 10px 50px;
+}
+.chat-title h1, .chat-title h2 {
+  font-weight: normal;
+  font-size: 20px;
+  margin: 0;
+  padding: 0;
+}
+.chat-title h2 {
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+.chat-title .avatar {
+  position: absolute;
+  z-index: 1;
+  top: 8px;
+  left: 9px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+}
+.chat-title .avatar img {
+  width: 100%;
+    height: 100%;
+    position: center;
+}
+
+/*--------------------
+Messages
+--------------------*/
+.messages {
+  flex: 1 1 auto;
+  color: rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+  position: relative;
+  width: 90%;
+    height:100px;
+}
+.messages .messages-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.messages .message {
+  clear: both;
+  float: left;
+  padding: 6px 10px 7px;
+  border-radius: 10px 10px 10px 0;
+  background: rgba(0, 0, 0, 0.11);
+  margin: 8px 0;
+  font-size: 20px;
+  line-height: 1.4;
+  margin-left: 35px;
+  position: relative;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+.messages .message .timestamp {
+  position: absolute;
+  bottom: -15px;
+  font-size: 9px;
+  color: #fff;
+}
+.messages .message::before {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  border-top: 6px solid rgba(0, 0, 0, 0.3);
+  left: 0;
+  border-right: 7px solid transparent;
+}
+.messages .message .avatar {
+  position: absolute;
+  z-index: 1;
+  bottom: -15px;
+  left: -35px;
+  border-radius: 30px;
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border: 2px solid rgba(255, 255, 255, 0.24);
+}
+.messages .message .avatar img {
+  width: 100%;
+    height: 100%;
+    position: center;
+}
+.messages .message.message-personal {
+  float: right;
+  color: #fff;
+  text-align: right;
+  background: linear-gradient(120deg, #248A52, #257287);
+  border-radius: 10px 10px 0 10px;
+}
+.messages .message.message-personal::before {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 5px solid transparent;
+  border-top: 4px solid #257287;
+  bottom: -4px;
+}
+.messages .message:last-child {
+  margin-bottom: 30px;
+}
+.messages .message.new {
+  transform: scale(0);
+  transform-origin: 0 0;
+  -webkit-animation: bounce 500ms linear both;
+          animation: bounce 500ms linear both;
+    color: #fff;
+}
+.messages .message.loading::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+  border: none;
+  -webkit-animation-delay: 0.15s;
+          animation-delay: 0.15s;
+}
+.messages .message.loading span {
+  display: block;
+  font-size: 0;
+  width: 20px;
+  height: 10px;
+  position: relative;
+}
+.messages .message.loading span::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+  margin-left: -7px;
+}
+.messages .message.loading span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  z-index: 2;
+  margin-top: 4px;
+  -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+          animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+  margin-left: 7px;
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+
+/*--------------------
+Message Box
+--------------------*/
+.message-box {
+  flex: 0 1 40px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+    color: #fff;
+  position: relative;
+}
+.message-box .message-input {
+  background: none;
+  border: none;
+  outline: none !important;
+  resize: none;
+  color: #fff;
+  font-size: 18px;
+  height: 60px;
+  margin: 0;
+  padding-right: 20px;
+  width: 90vw;
+}
+.message-box textarea:focus:-webkit-placeholder {
+  color: transparent;
+}
+.message-box .message-submit {
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+  right: 10px;
+  color: #000;
+  border: none;
+  font-size: 10px;
+  text-transform: uppercase;
+  line-height: 1;
+  padding: 6px 10px;
+  border-radius: 10px;
+  outline: none !important;
+  transition: background 0.2s ease;
+}
+
+/*--------------------
+Custom Srollbar
+--------------------*/
+.mCSB_scrollTools {
+  margin: 1px -3px 1px 0;
+  opacity: 0;
+}
+
+.mCSB_inside > .mCSB_container {
+  margin-right: 0px;
+  padding: 0 10px;
+}
+
+.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
+/*--------------------
+Bounce
+--------------------*/
+@-webkit-keyframes bounce {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+@keyframes bounce {
+  0% {
+    transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  4.7% {
+    transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  9.41% {
+    transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  14.11% {
+    transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  18.72% {
+    transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  24.32% {
+    transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  29.93% {
+    transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  35.54% {
+    transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  41.04% {
+    transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  52.15% {
+    transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  63.26% {
+    transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  85.49% {
+    transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+  100% {
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
+}
+@-webkit-keyframes ball {
+  from {
+    transform: translateY(0) scaleY(0.8);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+@keyframes ball {
+  from {
+    transform: translateY(0) scaleY(0.8);
+  }
+  to {
+    transform: translateY(-10px);
+  }
+}
+#section01{
+    background: rgba(72, 217, 217, 0.1) center center / cover no-repeat !important;
+
+}
+#section03 {
+    background: rgba(52, 93, 122, 0.22) center center / cover no-repeat;
+
+}
+#section04{
+    background: rgba(115, 78, 82, 0.17) center center / cover no-repeat;
+
+}
+#section05 {
+    background: rgba(168, 211, 212, 0.22) center center / cover no-repeat;
+}
+  .gradient-text {
+  /* Create the gradient. */
+   background-image: linear-gradient(
+        45deg,
+        black,
+        #e83f1c 16.666%,
+        #fd2a11 33.333%,
+        #ff7000 33.333%,
+        #ffb700 50%,
+        #758e08 50%,
+        #067d65 66.666%,
+        #005cff 66.666%,
+        #0055ff 83.333%,
+        rgb(255, 3, 228) 83.333%);
+
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+      font-family: "Archivo Black", sans-serif;
+      font-size: 40px;
+      text-align: center;
+
+}
+
+.gradient-text:hover{
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 100%;
+    }
+    40% {
+        background-size: 150%;
+    }
+        80% {
+        background-size: 450%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 650%;
+    }
+    40%{
+        background-size: 450%;
+    }
+    80% {
+        background-size: 150%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+</style>
+<body  onload="getRandomImageUser(); getRandomImageFa(); getRandomImageFb(); getRandompro()">
+
+
+
+
+<section id="section01" class="demo">
+    <a href="/aboutUs"> <button class="nav" > About Us  </button></a>
+    <a href="https://johnlark2050.wixsite.com/opendoor" style="top:30%;left:43%;width: 240px; height: 183.5px">
+        <img src="../static/Standard%20Logo%20Files/Original on Transparent.png" width="100%" height="100%"/>
+    </a>
+    <div class="gradient-text" style="position: relative; top:55% ;left: 1%">
+        <p>We help students develop creative and meaningful business ideas</p>
+    </div>
+
+  <a href="#section02"><span></span>Scroll</a>
+</section>
+    <section id="section02" class="demo">
+        <div  class="agora" >
+            <p ><b>Agora 1.0 </b></p>
+        </div>
+
+        <div class="gradient-text" style="position: relative; top:25% ; left: 1%;">
+            <p>Brainstorm ideas that can create value for you and everyone around us</p>
+        </div>
+        <div class="container" style="top:15%;">
+        <div class="card1">
+            <div class="face face1">
+                <div class="content">
+                     <h3>Step 1</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>The customer is your target market for whom you should brainstorm possible problems and solutions
+                        This step requires you to identify as many realistic problems as you can for the customer you have been assigned</p>
+                </div>
+            </div>
+        </div>
+        <div class="card1">
+            <div class="face face1">
+                <div class="content">
+                    <h3>Step 2</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>With your assigned customer you will be provided with a hint for a solution that you can use
+                        This step requires you to identify as many realistic solutions with the hints for the customer assigned to you</p>
+                </div>
+            </div>
+        </div>
+        <div class="card1">
+            <div class="face face1">
+                <div class="content">
+                    <h3>Step 3</h3>
+                </div>
+            </div>
+            <div class="face face2">
+                <div class="content">
+                    <p>After brainstorming your problems and solutions you can narrow it down into a mind map provided for you
+                        This step also enables you to improve your ideation and prepares you to effectually adopt the business model canvas for subsequent business planning</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <a href="#section03" style="left: 35%; bottom: 8%"><span></span>This is how your ideation process will look </a>
+
+    </section>
+    <section id="section03" class="demo">
+
+            <img src="../static/mindmap1.png" style="position: relative; top: 20%; left: 4vw;max-width: 90vw">
+
+      <a href="#section04"><span></span>Scroll</a>
+    </section>
+    <section id="section04" class="demo">
+
+        <div class="container  ">
+
+             <div>
+                    <label >
+                        <input type="checkbox"  />
+                        <div class="card cardone " >
+                            <div class="front">
+                                <div class="view view-tenth">
+                                Role Play
+                                    <div class="mask" >
+                                    <h2 >Role Play</h2>
+                                    <p>With a China specific environment in mind this situation allows you to experience how to ideate for new products and services within a specific context.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back">
+                                <div id="randImageFeaturea" ></div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div >
+                   <label>
+                        <input type="checkbox"  />
+                        <div class="card cardtwo" > <div class="front">
+                            <div class="view view-tenth">
+                                Customer
+                                <div class="mask">
+                                    <h2>Customer</h2>
+                                    <p>This individual/group of individuals or businesses, governments are the customers who need your expertise, your products and services to solve their problems. </p>
+                                </div>
+                            </div>
+                            </div>
+
+                            <div class="back" >
+                                <div id="randImageUser"  class=" card_size"></div>
+                                </div>
+                        </div>
+                    </label>
+                </div>
+
+                <div>
+                    <label>
+                        <input type="checkbox"  />
+                        <div class="card  cardthree" ><div class="front">
+                                <div class="view view-tenth">
+                             Problem Hint
+                            <div class="mask">
+                                    <h2>Problem Hint</h2>
+                                    <p>China like other countries is experiencing problems in 5 key areas. This card gives you a hint towards the problems you can address. You are free to introduce and address urgent problems that you think are necessary as well.</p>
+                            </div>
+                                </div>
+                            </div>
+                            <div class="back" >
+                                <div id="randImageS"></div></div>
+                        </div>
+                    </label>
+                </div>
+
+             <div>
+                    <label>
+                        <input type="checkbox"  />
+                        <div class="card cardfour" >
+                            <div class="front">
+                            <div class="view view-tenth">
+                              Solution Hint
+                                <div class="mask" >
+                                    <h2>Solution Hint</h2>
+                                    <p>This card gives you a hint towards various mechanisms, ideas that you can use for your solution/idea to address your customers problems. You are free to introduce and address problems with your own unique idea as well. </p>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="back" >
+                                  <div id="randImageFb"  ></div>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+            
+    </div>
+   
+
+      <a href="#section05" onclick="save_cards()"><span></span>Scroll</a>
+    </section>
+    <section id="section05" class="demo" translate="no" >
+    <div class="chat">
+  <div class="chat-title">
+    <h1>Your project Manager</h1>
+    <figure class="avatar">
+      <img src="../static/gaoruoyi1.jpg" /></figure>
+  </div>
+  <div class="messages" style="width: 100%">
+    <div class="messages-content"></div>
+  </div>
+  <div class="message-box">
+    <textarea type="text" class="message-input" placeholder="Type message..."></textarea>
+    <button type="submit" class="message-submit">Send</button>
+
+  </div>
+
+</div>
+<div class="bg"></div>
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+      <script id="rendered-js" >
+        var $messages = $('.messages-content'),
+        d,h,m,
+        i = 0;
+
+        $(window).load(function () {
+          $messages.mCustomScrollbar();
+          setTimeout(function () {
+            fakeMessage();
+          }, 100);
+        });
+
+        function updateScrollbar() {
+          $messages.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
+            scrollInertia: 10,
+            timeout: 0 });
+
+        }
+
+        function setDate() {
+          d = new Date();
+          if (m != d.getMinutes()) {
+            m = d.getMinutes();
+            $('<div class="timestamp">' + d.getHours() + ':' + m + '</div>').appendTo($('.message:last'));
+          }
+        }
+
+        function insertMessage() {
+          msg = $('.message-input').val();
+          if ($.trim(msg) == '') {
+            return false;
+          }
+          $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
+          setDate();
+          $('.message-input').val(null);
+          updateScrollbar();
+          setTimeout(function () {
+            fakeMessage();
+          }, 1000 + Math.random() * 20 * 100);
+        }
+
+        $('.message-submit').click(function () {
+          insertMessage();
+        });
+
+        $(window).on('keydown', function (e) {
+          if (e.which == 13) {
+            insertMessage();
+            return false;
+          }
+        });
+
+        var Fake = [
+        'Hello student, we have just been informed about a new project with high importance and urgency. ' +
+        'After discussing with our board members, we would like to you to lead the ideation for the project. ',
+        ' I believe my assistant Jack has already sent you the customer profile' +
+        ' and brief ideas that you need to work with, Am I correct?',
+        ' Ok, since this is the only time that we have each week lets go over a few key questions together.' +
+        ' I have already prepared some of them and would I like you to help me with it. '+
+        'Also, Jack, we have all day today so there is no need to rush with the answers,take your time because we need quality answers. ' +
+        'A lot is depending on this project for us. If we get it right, we could attract millions in funding! ',
+        'Ok! Let’s begin by listing the possible long term and short-term problems our customer can face:',
+        'Great! I like the variety of problems you have mentioned! Next, I need your help with the possible long term and short term within our solution possibilities.',
+        ' Yes, I think this makes sense! We have a good pool of options now! ' +
+        'Ok let’s narrow them down, shall we? Of all the problems we listed which one do you think needs to be prioritized and why?',
+        ' So, what kind of idea do you have in mind? How can we solve this potential customer problem?',
+        'All right, Jack, a couple of things I need you to do. First, can you please put your thoughts down in a concise manner into our mind map? ' +
+        'After that the board will give you a feedback report on the feasibility of idea! Then we start building the business model and implementing your idea! Can’t wait to start working on this! Talk to you next week! Bye!',
+            'Bye'
+        ];
+
+
+        function fakeMessage() {
+          if ($('.message-input').val() != '') {
+            return false;
+          }
+          $('<div class="message loading new"><figure class="avatar"><img src="../static/gaoruoyi1.jpg" /></figure><span></span></div>').appendTo($('.mCSB_container'));
+          updateScrollbar();
+
+          setTimeout(function () {
+            $('.message.loading').remove();
+            $('<div class="message new"><figure class="avatar"><img src="../static/gaoruoyi1.jpg" /></figure>' + Fake[i] + '</div>').appendTo($('.mCSB_container')).addClass('new');
+            setDate();
+            updateScrollbar();
+            i++;
+          }, 1000 + Math.random() * 20 * 100);
+
+        }
+        //# sourceURL=pen.js
+            </script>
+
+      <a href="#section06"><span></span>Scroll</a>
+    </section>
+
+<script>
+    !function(e){var a,t={init:function(s){var n=e(this);
+            a=e.extend({nodeClass:"node", nodeInputClass:"node_input",nodeTextClass:"node_text",activeClass:"node_active",editableClass:"node_editable",rootClass:"node_root",childrenClass:"children",childrenItemClass:"children_item",leftBranch:"children_leftbranch",rightBranch:"children_rightbranch",root:n,balance:!0},s)
+                ,a.nodes=n.find("."+a.nodeClass),a.nodeInput=n.find("."+a.nodeInputClass),n.find(a.activeClass).length?a.activeNode=n.find(a.activeClass):a.activeNode=null,e(document).on("keydown",function(s){if(a.activeNode){var n,l,r,i=s.which||s.keyCode,d=a.activeNode;
+                switch(i){case 13:if(d.hasClass(a.editableClass))return t.blur(),t.setActive(d),!1;
+            if(d.hasClass(a.rootClass))return;
+            t.addNode();
+            break;
+            case 9:
+                d.hasClass(a.editableClass)?(t.blur(),t.setActive(d)):(s.preventDefault(),t.addChildNode());
+            break;
+            case 27:
+                break;
+            case 8:
+                case 46:
+                    if(d.hasClass(a.editableClass))return!0;
+                    if(d.hasClass(a.rootClass))return!1;
+                    l=d.parent().next().children("."+a.nodeClass),r=d.parent().parent().prev(),s.preventDefault(),t.removeNode(),l.length?(l.addClass(a.activeClass),a.activeNode=l):(r.addClass(a.activeClass),a.activeNode=r);
+                    break;
+                    case 37:
+                        if(d.hasClass(a.editableClass))return!0;
+                        d.hasClass(a.rootClass)?t.selectChildNode(e("."+a.leftBranch)):d.closest("."+a.rightBranch).length?t.selectParentNode():t.selectChildNode();
+                        break;
+                        case 38:
+                            if(d.hasClass(a.editableClass))return!0;
+                            n=d.parent().prev().children("."+a.nodeClass),n.length&&(t.blur(),t.setActive(n));
+                            break;
+                            case 39:if(d.hasClass(a.editableClass))return!0;
+                            d.hasClass(a.rootClass)?t.selectChildNode(e("."+a.rightBranch)):d.closest("."+a.rightBranch).length?t.selectChildNode():t.selectParentNode();
+                            break;
+                            case 40:
+                                if(d.hasClass(a.editableClass))return!0;
+                                l=d.parent().next().children("."+a.nodeClass),l.length&&(t.blur(),t.setActive(l))}}}),n.on("click","."+a.nodeClass,function(){var s=e(this);
+                                    s.hasClass(a.activeClass)?(t.blur(),t.setActive(s),t.setEditable(s)):(t.blur(),t.setActive(s))}).on("input paste","."+a.nodeInputClass,function(){var t=a.activeNode,s=t.find("."+a.nodeTextClass),n=e(this);s.text(n.val())}).on("keydown","."+a.nodeInputClass,function(e){var a=e.which||e.keyCode;9===a&&e.preventDefault()})},destroy:function(){e(window).unbind(".mindmap")},selectParentNode:function(){var e,s=a.activeNode,n=s.parent().parent().parent();e=n.children("."+a.nodeClass),t.blur(),t.setActive(e)},selectChildNode:function(e){var s,n=a.activeNode;e||(e=n.parent().children("."+a.childrenClass)),s=e.children("."+a.childrenItemClass+":first-child").children("."+a.nodeClass),s.length&&(t.blur(),t.setActive(s))},removeNode:function(){var e=a.activeNode,s=e.parent(),n=s.parent(),l=n.children().length-1;l?s.remove():n.remove(),t.blur(),t.balance()},addNode:function(){var e,s,n=a.activeNode.parent().parent();n.append(t.getTemplate(1)),e=n.children("."+a.childrenItemClass+":last"),s=e.children("."+a.nodeClass),t.blur(),t.setEditable(s),t.balance()},addChildNode:function(){var e,s,n=a.activeNode.parent(),l=n.children("."+a.childrenClass);l.length?(a.activeNode.hasClass(a.rootClass)&&2===l.length&&(l=l.filter("."+a.leftBranch)),l.append(t.getTemplate(1)),e=l.children("."+a.childrenItemClass+":last"),s=e.children("."+a.nodeClass)):(n.append(t.getTemplate(1,1)),l=n.children("."+a.childrenClass),e=l.children("."+a.childrenItemClass+":last"),s=e.children("."+a.nodeClass)),t.blur(),t.setEditable(s),t.balance()},blur:
+                function(){if(a.activeNode){var e=a.activeNode,t=e.find("."+a.nodeTextClass),s=e.find("."+a.nodeInputClass);
+                    e.hasClass(a.editableClass)&&(t.text(s.val()),s.blur()),e.removeClass(a.activeClass).removeClass(a.editableClass),a.activeNode=null}},setActive:function(e){e.addClass(a.activeClass),a.activeNode=e},setEditable:function(e){var t=e.find("."+a.nodeInputClass),s=e.find("."+a.nodeTextClass);e.addClass(a.activeClass).addClass(a.editableClass).attr("data-value",s.text()),t.val(s.text()).focus().select(),a.activeNode=e},balance:function(){if(a.balance){var s,n,l,r,i,d=0,o=e("."+a.rightBranch),c=e("."+a.leftBranch),h=0,C=a.root.children("."+a.childrenClass);if(!o.length)if(i=C.not("."+a.leftBranch),i.length)i.addClass(a.rightBranch);else{if(!C.length)return;C.eq(0).removeClass(a.leftBranch).addClass(a.rightBranch).appendTo(a.root)}if(!c.length)if(i=C.not("."+a.rightBranch),i.length)i.addClass(a.leftBranch);else{if(!C.length)return;a.root.prepend(t.getTemplate(0,1)),a.root.children("."+a.childrenClass).not("."+a.rightBranch).addClass(a.leftBranch)}r=c.children(),l=o.children(),h=o.outerHeight()+c.outerHeight(),s=.5*h;for(var u=0,v=l.length;v>u;u++){if(d+=l.eq(u).outerHeight(),n=Math.abs(.5*h-d),!(s>=n))return void t.moveNodes(1,u,v);s=n}for(var f=0,p=r.length;p>f;f++){if(d+=r.eq(f).outerHeight(),n=Math.abs(.5*h-d),!(s>=n))return void(f>0&&t.moveNodes(0,0,f-1));s=n}t.clearEmptyBranches()}},moveNodes:function(s,n,l){var r,i,d;i=e(s?"."+a.rightBranch:"."+a.leftBranch),d=e(s?"."+a.leftBranch:"."+a.rightBranch),r=i.children(),r.each(function(a){a>=n&&l>=a&&e(this).appendTo(d)}),t.clearEmptyBranches()},clearEmptyBranches:function(){var t=a.root.children("."+a.childrenClass);t.each(function(){e(this).children().length||e(this).remove()})},getTemplate:function(e,t){var s="";return s+=t?' <ol class="'+a.childrenClass+'">':"",s+=e?'<li class="'+a.childrenItemClass+'"><div class="'+a.nodeClass+'"><div class="'+a.nodeTextClass+'">Node</div><input class="'+a.nodeInputClass+'" type="text"></div></li> ':"",s+=t?"</ol>":""}};e.fn.mindmap=function(a){return t[a]?t[a].apply(this,Array.prototype.slice.call(arguments,1)):"object"!=typeof a&&a?void e.error("Unknown method: "+a):t.init.apply(this,arguments)}}(jQuery),$(function(){var e=!1,a=0,t=0;$(window).on("mousemove touchmove",function(s){if(e===!0){var n=$(window).scrollTop()+(a-s.pageY),l=$(window).scrollLeft()+(t-s.pageX);$(window).scrollTop(n),$(window).scrollLeft(l)}}),$(window).on("mousedown touchstart",function(s){e=!0,a=s.pageY,t=s.pageX}),$(window).on("mouseup touchend",function(){e=!1})});
+
+
+    $(function() {
+  $('.mindmap').mindmap();
+  $('.collapse_btn').on('click', function(){
+    $(this).parent().toggleClass('collapsed');
+  });
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function(e){ $('.node_root img').attr('src',e.target.result); }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $('.node_root input').on('change',function(){
+    readURL(this);
+  });
+});
+
+     if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+      }
+
+
+        window.console = window.console || function(t) {};
+</script>
+    <section id="section06" class="demo">
+
+        <div class="mindmap">
+
+      <!--CENTER-->
+      <div class="node node_root">
+       Customer
+      </div>
+
+      <!--RIGHT-->
+      <ol class="children children_rightbranch ">
+          <ol class="children">
+            <li class="children_item">
+              <div class="node node_root">
+                <div class="">Possible Problems</div>
+              </div>
+              <ol class="children">
+
+                <li class="children_item">
+                  <div class="node node_root">
+                    <div class="">Long Term Problems</div>
+                  </div>
+                </li>
+                <li class="children_item">
+                  <div class="node node_root">
+                    <div class="">Short Term Problem</div>
+                  </div>
+                  <ol class="children">
+                    <li class="children_item">
+                      <div class="node ">
+                        <div class="node_text">Node</div>
+                        <input type="text" class="node_input">
+                      </div>
+                    </li>
+                  </ol>
+                </li>
+                <li class="children_item">
+                  <div class="node node_root">
+                    <div class=" ">Urgent Problem</div>
+                  </div>
+                </li>
+              </ol>
+
+            <li class="children_item">
+              <div class="node node_root">
+                <div class="">Possible Solutions</div>
+              </div>
+              <ol class="children">
+
+                <li class="children_item">
+                  <div class="node node_root">
+                    <div class=" ">Urgent Solutions</div>
+                  </div>
+                </li>
+                <li class="children_item">
+                  <div class="node node_root">
+                    <div class=" ">Long Term Solutions</div>
+                  </div>
+                  <ol class="children">
+                    <li class="children_item">
+                      <div class="node">
+                        <div class="node_text">Node</div>
+                        <input type="text" class="node_input">
+                      </div>
+                    </li>
+                  </ol>
+                </li>
+              </ol>
+            </li>
+
+              <li class="children_item">
+              <div class="node node_root">
+                  <div class="" style="line-height: 46px">Value Provided<br>to Customers</div>
+              </div>
+                  <ol class="children">
+                    <li class="children_item">
+                      <div class="node">
+                        <div class="node_text">Node </div>
+                        <input type="text" class="node_input">
+                      </div>
+                    </li>
+                  </ol>
+              </li>
+          </ol>
+      </ol>
+        </div>
+
+
+
+
+
+    <div class="message1">
+
+      <p style="font-size: 20px;color: #222;z-index: -1;">
+        <i><b>Double-click</b></i> a node to edit.<br>
+        Select and press <i><b>ENTER</b></i> to add a node on the same level.<br>
+        Select and press <i><b>TAB</b></i> to add a node on a sub-level.<br>
+        Select and press <i><b>DELETE</b></i> to delete a node.
+      </p></b>
+        <br>
+     </div>
+
+        <style>
+
+    .message1 {
+    background: rgba(214, 253, 225, 0.4);
+      background-size: 100% 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 600px;
+    height: 20vh;
+    padding: 20px;
+        margin-left: 0;
+        margin-top: 0;
+        z-index: -1;
+    overflow: hidden;
+    box-sizing: border-box;
+
+    }
+
+    .message1 h1 {
+      color:#222;
+    }
+    </style>
+    <style>
+        :root {
+      --primary-color: rgba(140, 190, 158, 0.6);
+      --secondary-color: rgba(139, 147, 203, 0.6);
+      --text-color: black;
+      --line-color: rgba(255, 87, 65, 0.68);
+      --focus-color:yellow;
+      --node-size: 700px;
+
+    }
+
+
+    div,ol,ul,input{
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+
+    .mindmap {
+        position:absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        max-width: 100vw;
+        max-height: 100vh;
+        width: auto;
+        height: auto;
+        margin: 0 auto auto -20%;
+        padding: calc(var(--node-size) / 2);
+        text-align: center;
+        white-space: nowrap;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        z-index: 4;
+    }
+
+    .mindmap:before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+        width: 0;
+    }
+
+    .node {
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+        height: 12vh;
+        width: 14vw;
+        margin: 0.25vw 0;
+        text-align: center;
+        line-height: 100px;
+        border: 0.1vw solid var(--line-color);
+        border-radius: 10%;
+        background: var(--secondary-color);
+        cursor: pointer;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+         font-size: 1.2vw;
+    }
+
+    .node:hover {
+        border-width: 4px;
+    }
+
+    .node_input {
+        display: none;
+        position: absolute;
+        top: 25px;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        font: inherit;
+        font-style: italic;
+        text-align: center;
+        background: none;
+        color: inherit;
+    }
+
+    .node_input:focus {
+        outline: 0;
+    }
+
+    .node_active,
+    .node_active:hover {
+        border-color: var(--focus-color);
+    }
+
+    .node_root {
+        height: 12vh;
+        width: 14vw;
+        text-align: center;
+        line-height: 100px;
+        font-size: 1.2vw;
+        border: 0.2vw solid var(--line-color);
+    }
+
+    .node_root input{
+        opacity: 1;
+    }
+
+
+    .node_editable {
+        border: 0.3vw solid var(--focus-color);
+    }
+
+    .node_editable.node_root {
+       border: 0.3vw solid var(--focus-color);
+    }
+
+    .node_editable .node_text {
+        height: 0;
+        overflow: hidden;
+    }
+
+    .node_editable .node_input {
+        display: block;
+    }
+
+    .children {
+        position: relative;
+        list-style: none;
+        text-align: left;
+        padding: 0 0 0 6px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+    .children:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: -5px;
+        width: 12px;
+        border-top: 2px solid var(--line-color);
+    }
+
+    .children_item {
+        position: relative;
+        padding: 0 0 0 10px;
+        border-left: 2px solid var(--line-color);
+    }
+
+    .children_item:first-child,
+    .children_item:last-child {
+        border-left: 1px solid transparent;
+    }
+
+    .children_item:before {
+        content: '';
+        width: 10px;
+        border-top: 2px solid var(--line-color);
+        position: absolute;
+        top: 50%;
+        left: 0;
+    }
+
+    .children_item:first-child:before {
+        left: -1px;
+        bottom: 0;
+        border-radius: 4px 0 0 0;
+        border-left: 2px solid var(--line-color);
+    }
+
+    .children_item:last-child:before {
+        left: -1px;
+        top: 0;
+        bottom: 50%;
+        border-radius: 0 0 0 4px;
+        border: 0;
+        border-left: 2px solid var(--line-color);
+        border-bottom: 2px solid var(--line-color);
+    }
+
+    .children_item:first-child:last-child:before {
+        top: 50%;
+        bottom: auto;
+        border: 0;
+        border-radius: 0;
+        border-top: 2px solid var(--line-color);
+    }
+
+    .children_leftbranch,
+    .children_leftbranch .children {
+        direction: rtl;
+        text-align: right;
+        padding: 0 6px 0 0;
+    }
+
+    .children_leftbranch:before,
+    .children_leftbranch .children:before {
+        left: auto;
+        right: -4px;
+    }
+
+    .children_leftbranch .children_item {
+        padding: 0 10px 0 0;
+        border: 0;
+        border-right: 2px solid var(--line-color);
+    }
+
+    .children_leftbranch .children_item:first-child,
+    .children_leftbranch .children_item:last-child {
+        border-right: 2px solid transparent;
+    }
+
+    .children_leftbranch .children_item:before {
+        top: 50%;
+        left: auto;
+        right: 0;
+    }
+
+    .children_leftbranch .children_item:first-child:before {
+        right: -1px;
+        border: 0;
+        border-radius: 0 4px 0 0;
+        border-top: 2px solid var(--line-color);
+        border-right: 2px solid var(--line-color);
+    }
+
+    .children_leftbranch .children_item:last-child:before {
+        right: -1px;
+        top: 0;
+        bottom: 50%;
+        border-radius: 0 0 4px 0;
+        border: 0;
+        border-right: 2px solid var(--line-color);
+        border-bottom: 2px solid var(--line-color);
+    }
+
+    .children_leftbranch .children_item:first-child:last-child:before {
+        top: 50%;
+        bottom: auto;
+        border: 0;
+        border-radius: 0;
+        border-top: 2px solid var(--line-color);
+    }
+
+    .children .children .node{
+        background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.15)), to(rgba(0, 0, 0, 0.15))) var(--secondary-color);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.15)) var(--secondary-color);
+    }
+
+    .children .children .children .node{
+        background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.30)), to(rgba(0, 0, 0, 0.30))) var(--secondary-color);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.30)) var(--secondary-color);
+    }
+
+    .children .children .children .children .node{
+        background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.45)), to(rgba(0, 0, 0, 0.45))) var(--secondary-color);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)) var(--secondary-color);
+    }
+
+    .children .children .children .children .children .node{
+        background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, 0.60)), to(rgba(0, 0, 0, 0.60))) var(--secondary-color);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)) var(--secondary-color);
+    }
+
+    </style>
+
+      <a href="#thanks"><span></span>Scroll</a>
+    </section>
+
+    <section id="thanks">
+      <div>
+        <h2>Thanks!</h2>
+        <p><a href="https://johnlark2050.wixsite.com/opendoor" >&lt; Back To Home</a></p>
+      </div>
+    </section>
+
+</body>
+</html>

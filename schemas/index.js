@@ -8,7 +8,7 @@ const connect = () => {
     // mongodb://localhost/asg2 => local
     //mongodb://test:test@3.34.142.192:27017
 
-    .connect("mongodb://localhost/asg2", {
+    .connect("mongodb://localhost/opendoor", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useCreateIndex: true,
@@ -18,7 +18,7 @@ const connect = () => {
 };
 
 mongoose.connection.on("error", (err) => {
-  console.error("몽고디비 연결 에러", err);
+  console.error("error connecting mongodb", err);
 });
 
 module.exports = connect;

@@ -11,9 +11,12 @@
     "joi": "^17.4.0",
     "jquery": "^3.6.0",
     "jsonwebtoken": "^8.5.1",
+    "less": "^4.1.1",
+    "less-plugin-autoprefix": "^2.0.0",
     "mongoose": "^5.13.2",
     "mongoose-auto-increment": "^5.0.1",
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "uglify-js": "^3.14.2"
   },
   "devDependencies": {},
   "scripts": {
