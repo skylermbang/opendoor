@@ -32,6 +32,14 @@ def save_cards():
     return jsonify({'msg': 'Your cards have been saved'})
 
 
+@app.route('/answer', methods=['POST'])
+def save_cards():
+    problem_receive = request.form['problem_give']
+   
+    db.opendoor.insert_one({'Problem': problem_receive,em})
+    print(rp_receive, customer_receive, problem_receive,solution_receive)
+    return jsonify({'msg': 'Your cards have been saved'})
+
 if __name__ == '__main__':
     app.run()
 
