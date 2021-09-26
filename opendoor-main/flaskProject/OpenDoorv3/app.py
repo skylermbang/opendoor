@@ -14,7 +14,7 @@ db=client.opendoor
 
 @app.route("/")
 def index():
-    return render_template("allinone.html")
+    return render_template("index.html")
 
 @app.route('/aboutUs') 
 def f_infor():
@@ -32,13 +32,29 @@ def save_cards():
     return jsonify({'msg': 'Your cards have been saved'})
 
 
-@app.route('/answer', methods=['POST'])
-def save_cards():
-    problem_receive = request.form['problem_give']
-   
-    db.opendoor.insert_one({'Problem': problem_receive,em})
-    print(rp_receive, customer_receive, problem_receive,solution_receive)
-    return jsonify({'msg': 'Your cards have been saved'})
+@app.route('/inputs', methods=['POST'])
+def save_inputs():
+    input_receive0 = request.form['input_give0']
+    input_receive1 = request.form['input_give1']
+    input_receive2 = request.form['input_give2']
+    input_receive3 = request.form['input_give3']
+    input_receive4 = request.form['input_give4']
+    input_receive5 = request.form['input_give5']
+    input_receive6 = request.form['input_give6']
+    input_receive7 = request.form['input_give7']
+
+
+
+    db.opendoor.insert_one({'Input0': input_receive0,
+                            'Input1': input_receive1,
+                            'Input2': input_receive2,
+                            'Input3': input_receive3,
+                            'Input4': input_receive4,
+                            'Input5': input_receive5,
+                            'Input6': input_receive6,
+                            'Input7': input_receive7})
+
+    return jsonify({'msg': 'Your inputs have been saved'})
 
 if __name__ == '__main__':
     app.run()
