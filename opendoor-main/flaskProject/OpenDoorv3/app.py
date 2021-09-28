@@ -54,7 +54,12 @@ def save_inputs():
                             'Input6': input_receive6,
                             'Input7': input_receive7})
 
-    return jsonify({'msg': 'Your inputs have been saved'})
+@app.route('/answers', methods=['POST'])
+def save_inputs():
+    input_receive0 = request.form['input_give0']
+
+
+    return jsonify({'msg': 'Your answers have been saved'})
 
 if __name__ == '__main__':
     app.run()

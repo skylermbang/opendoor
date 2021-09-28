@@ -221,6 +221,20 @@
         });
       }
 
+      function save_answer() {
+        let answer1 = document.getElementById("answer1").value;
+        console.log(answer1);
+
+        $.ajax({
+          type: "POST",
+          url: "/answers",
+          data: {},
+          success: function (response) {
+            alert(response["msg"]);
+          },
+        });
+      }
+
       let inputs = [];
       function save_input() {
         let user_input = document.getElementById("input").value;
@@ -1646,7 +1660,7 @@
         <label for="exampleFormControlTextarea1" class="form-label"> </label>
         <textarea class="form-control" id="answer9" rows="3"></textarea>
 
-        <button class="submit">Submit</button>
+        <button class="submit" onclick="save_answer()">Submit</button>
       </div>
     </section>
 
