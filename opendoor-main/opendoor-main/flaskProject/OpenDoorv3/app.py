@@ -1,3 +1,4 @@
+
 from flask import Flask, render_template, request, jsonify
 from pymongo import MongoClient
 from flask_bootstrap import Bootstrap
@@ -5,14 +6,9 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-##client = MongoClient('mongodb://아이디:비밀번호@localhost', 27017)
-##MongoClient('localhost',27017)
-client=MongoClient('mongodb://test:test@localhost', 27017)
-##MongoClient('localhost',27017)
-db=client.opendoor
 
-## db.opendoor.insert_one({'name':'test','age':21} )
-## testing the dbs
+client=MongoClient('mongodb://test:test@localhost', 27017)
+db=client.opendoor
 
 
 @app.route("/")
@@ -91,6 +87,5 @@ def save_answer():
 
     return jsonify({'msg': 'Your answers have been saved'})
 
-if __name__ == '__main__':
-    app.run()
-
+if __name__ == '__main__':  
+   app.run('0.0.0.0', port=5000, debug=True)
