@@ -17,11 +17,11 @@ def index():
 
 @app.route("/en")
 def en():
-    return render_template("index.html")
+    return render_template("index_v2.html")
 
 @app.route("/cn")
 def cn():
-    return render_template("index_cn.html")
+    return render_template("index_cn_v2.html")
 
 @app.route('/aboutUs') 
 def f_infor():

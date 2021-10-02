@@ -1,0 +1,1615 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>OpenDoor E-learning</title>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <link href="/static/bootstrap.min.css" rel="stylesheet" />
+
+    <!--Font awesome-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.rawgit.com/konpa/devicon/master/devicon.min.css"
+    />
+    <!--FONTS-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Baloo+Bhai"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Arvo:700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:900"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css"
+    />
+
+    <script type="text/javascript">
+      $(function () {
+        $("a[href*=#]").on("click", function (e) {
+          e.preventDefault();
+          $("html, body").animate(
+            { scrollTop: $($(this).attr("href")).offset().top },
+            500,
+            "linear"
+          );
+        });
+      });
+      ImageArrayFeaturea = new Array();
+      ImageArrayFeaturea[0] = "roleplay(1).jpg";
+      ImageArrayFeaturea[1] = "roleplay(2).jpg";
+      ImageArrayFeaturea[2] = "roleplay(3).jpg";
+      ImageArrayFeaturea[3] = "roleplay(4).jpg";
+      ImageArrayFeaturea[4] = "roleplay.jpg";
+      ImageArrayFeatureb = new Array();
+      ImageArrayFeatureb[0] = "solutionhint1.jpg";
+      ImageArrayFeatureb[1] = "solutionhint2.jpg";
+      ImageArrayFeatureb[2] = "solutionhint3.jpg";
+      ImageArrayFeatureb[3] = "solutionhint4.jpg";
+      ImageArrayFeatureb[4] = "solutionhint5.jpg";
+      ImageArrayFeatureb[5] = "solutionhint6.jpg";
+      ImageArrayFeatureb[6] = "solutionhint7.jpg";
+      ImageArrayFeatureb[7] = "solutionhint8.jpg";
+      ImageArrayFeatureb[8] = "solutionhint9.jpg";
+      ImageArrayFeatureb[9] = "solutionhint10.jpg";
+      ImageArrayUser = new Array();
+      ImageArrayUser[0] = "customer1.jpg";
+      ImageArrayUser[1] = "customer2.jpg";
+      ImageArrayUser[2] = "customer3.jpg";
+      ImageArrayUser[3] = "customer4.jpg";
+      ImageArrayUser[4] = "customer5.jpg";
+      ImageArrayUser[5] = "customer6.jpg";
+      ImageArrayUser[6] = "customer7.jpg";
+      ImageArrayUser[7] = "customer8.jpg";
+      ImageArrayUser[8] = "customer9.jpg";
+      ImageArrayUser[9] = "customer10.jpg";
+      ImageArraypro = new Array();
+      ImageArraypro[0] = "problem_hint1.jpg";
+      ImageArraypro[1] = "problem_hint2.jpg";
+      ImageArraypro[2] = "problem_hint3.jpg";
+      ImageArraypro[3] = "problem_hint4.jpg";
+      ImageArraypro[4] = "problem_hint5.jpg";
+
+      /*customer*/
+      let cards = [];
+
+      function getRandomImageUser() {
+        var numUser = Math.floor(Math.random() * 9);
+        var imgUser = ImageArrayUser[numUser];
+
+        cards.push(imgUser);
+        document.getElementById("randImageUser").innerHTML =
+          '<img src="' +
+          "../static/customer_c/" +
+          imgUser +
+          '" style=" height: 25vh;width: 30vw;border-radius: 50px; position: center" >';
+      }
+      /*roleplay*/
+      function getRandomImageFa() {
+        var numFa = Math.floor(Math.random() * 4);
+        var imgFa = ImageArrayFeaturea[numFa];
+        cards.push(imgFa);
+        document.getElementById("randImageFeaturea").innerHTML =
+          '<img src="' +
+          "../static/role_play_c/" +
+          imgFa +
+          '" style="height: 25vh;width: 30vw;border-radius: 50px;position: center" >';
+      }
+      function getRandompro() {
+        var numS = Math.floor(Math.random() * 4);
+        var imgS = ImageArraypro[numS];
+        cards.push(imgS);
+        document.getElementById("randImageS").innerHTML =
+          '<img src="' +
+          "../static/problemhint_c/" +
+          imgS +
+          '" style=" height: 25vh;width: 30vw;border-radius: 50px;position: center" >';
+      }
+      /*solution*/
+      function getRandomImageFb() {
+        var numFb = Math.floor(Math.random() * 9);
+        var imgFb = ImageArrayFeatureb[numFb];
+        cards.push(imgFb);
+        document.getElementById("randImageFb").innerHTML =
+          '<img src="' +
+          "../static/solutionhint_c/" +
+          imgFb +
+          '" style="height: 25vh;width: 30vw;border-radius: 50px; position: center" >';
+      }
+
+      function save_cards() {
+        console.log("checking");
+        //console.log(cards)
+
+        const rp = cards[0];
+        const customer = cards[1];
+        const problem = cards[2];
+        const solution = cards[3];
+
+        console.log(rp, customer, problem, solution);
+
+        $.ajax({
+          type: "POST",
+          url: "/cards",
+          data: {
+            rp_give: rp,
+            customer_give: customer,
+            problem_give: problem,
+            solution_give: solution,
+          },
+          success: function (response) {
+            alert(response["msg"]);
+            window.location.reload();
+          },
+        });
+      }
+
+      function send_answer(inputs) {
+        console.log("save inputs");
+        console.log(inputs);
+        const input0 = inputs[0];
+        const input1 = inputs[1];
+        const input2 = inputs[2];
+        const input3 = inputs[3];
+        const input4 = inputs[4];
+        const input5 = inputs[5];
+        const input6 = inputs[6];
+        const input7 = inputs[7];
+
+        console.log(
+          input0,
+          input1,
+          input2,
+          input3,
+          input4,
+          input5,
+          input6,
+          input7
+        );
+
+        $.ajax({
+          type: "POST",
+          url: "/inputs",
+          data: {
+            input_give0: input0,
+            input_give1: input1,
+            input_give2: input2,
+            input_give3: input3,
+            input_give4: input4,
+            input_give5: input5,
+            input_give6: input6,
+            input_give7: input7,
+          },
+          success: function (response) {
+            alert(response["msg"]);
+          },
+        });
+      }
+
+      let inputs = [];
+      function save_input() {
+        let user_input = document.getElementById("input").value;
+
+        if (inputs.length === 8) {
+          send_answer(inputs);
+        } else {
+          console.log(user_input);
+          inputs.push(user_input);
+          console.log(inputs);
+        }
+      }
+    </script>
+  </head>
+  <style>
+
+
+
+        @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:300,400);
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+        color: #000;
+    }
+        .nav{
+            border: transparent;
+            font-size: 2vw;
+            border-radius: 25px;
+            line-height: 40px;
+            padding: 8px;
+            position: absolute;
+            background: rgba(243, 216, 207, 0.32);
+            top: 0;
+            left: 0;
+            margin-left: -45vw;
+            margin-top: -95vh;
+        }
+    section {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    section::after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 80%;
+        z-index: -1;
+    }
+    section h1 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      color: #000;
+      font : normal 300 64px/1 'Josefin Sans', sans-serif;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    section a span {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 24px;
+      height: 24px;
+      margin-left: -12px;
+      border-left: 1px solid #000;
+      border-bottom: 1px solid #000;
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      -webkit-animation: sdb04 2s infinite;
+      animation: sdb04 2s infinite;
+      box-sizing: border-box;
+        z-index: 10;
+    }
+    @-webkit-keyframes sdb04 {
+      0% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+      }
+      20% {
+        -webkit-transform: rotate(-45deg) translate(-10px, 10px);
+      }
+      40% {
+        -webkit-transform: rotate(-45deg) translate(0, 0);
+      }
+    }
+    @keyframes sdb04 {
+      0% {
+        transform: rotate(-45deg) translate(0, 0);
+      }
+      20% {
+        transform: rotate(-45deg) translate(-10px, 10px);
+      }
+      40% {
+        transform: rotate(-45deg) translate(0, 0);
+      }
+    }
+
+
+
+    #section06 {
+      position: relative;
+      width: 100%;
+    height: 310vh;
+        background: rgba(185, 122, 181, 0.35) center center / cover no-repeat;
+
+    }
+
+
+    #thanks {
+      background-color: rgba(49, 51, 53, 0.29);
+    }
+    #thanks::after {
+      content: none;
+    }
+    #thanks div {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      text-align: center;
+    }
+    #thanks h2 {
+      margin-bottom: 60px;
+      color: #333;
+      font : normal 300 64px/1 'Josefin Sans', sans-serif;
+      text-align: center;
+      white-space: nowrap;
+    }
+    #thanks p {
+      color: #333;
+      font : normal 400 20px/1 'Josefin Sans', sans-serif;
+    }
+    #thanks p a {
+      color: #333;
+      text-decoration: none;
+      transition: color .3s;
+    }
+    #thanks p a:hover {
+      color: #888;
+    }
+    .demo a {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      z-index: 2;
+      display: inline-block;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      color: #000;
+      font : normal 400 20px/1 'Josefin Sans', sans-serif;
+      letter-spacing: .1em;
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+    .demo a:hover {
+      opacity: .5;
+    }
+    .agora{
+        left:41%;
+        top:5%;
+        font: normal 10 50px/5 'Josefin Sans', sans-serif;
+        position: absolute;
+        border-style:solid;
+        border-radius: 6px;
+        border-width:4px;
+        width:300px;
+        height: 70px;
+        line-height:0;
+        padding-top: 2px;
+        padding-bottom:25px;
+    }
+    .agora p, .agora b{
+        line-height: 1.6;
+         width:300px;
+         height: 70px;
+        left:0;
+        position: relative;
+    }
+            #section02  {
+                  position:relative;
+                height: 100vh;
+                z-index: 3;
+                color: #000;
+                text-align: center;
+                padding-top: 1px;
+                background: rgba(238, 95, 91, 0.07);
+              }
+
+
+    .container{
+        width: 90vw;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+    }
+
+    .container .card1{
+        position: relative;
+        cursor: pointer;
+    }
+
+    .container .card1 .face{
+        width: 25vw;
+        height: 30vh;
+        transition: 0.5s;
+    }
+
+    .container .card1 .face.face1{
+        position: relative;
+        background: rgba(51, 51, 51, 1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+        transform: translateY(15vh);
+        overflow: hidden;
+    }
+
+    .container .card1:hover .face.face1{
+        background: rgba(255, 0, 87, 0.45);
+        transform: translateY(0);
+    }
+
+    .container .card1 .face.face1 .content{
+        opacity: 0.2;
+        transition: 0.5s;
+    }
+
+    .container .card1:hover .face.face1 .content{
+        opacity: 1;
+    }
+
+    .container .card1 .face.face1 .content img{
+        max-width: 100px;
+    }
+
+    .container .card1 .face.face1 .content h3{
+        margin: 10px 0 0;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .container .card1 .face.face2{
+        position: relative;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+        transform: translateY(-15vh);
+    }
+
+    .container .card1:hover .face.face2{
+        transform: translateY(0);
+    }
+
+    .container .card1 .face.face2 .content p{
+        margin: 0;
+        padding: 0;
+        line-height: 20px;
+        max-height: 30vh;
+        overflow: hidden;
+    }
+
+    .container .card1 .face.face2 .content a{
+        margin: 15px 0 0;
+        display:  inline-block;
+        text-decoration: none;
+        font-weight: 900;
+        color: #333;
+        padding: 5px;
+        border: 1px solid #333;
+    }
+
+    .container .card1 .face.face2 .content a:hover{
+        background: #333;
+        color: #fff;
+    }
+     #section03 div {
+                  position: absolute;
+        z-index: 3;
+                  text-align: center;
+                     font-size:30px;
+                     left: 18%;
+                     top:20px;
+                     color:white;
+                     font-weight:40;
+                     align-content: center;
+                     border-style:solid;
+                     border-radius: 6px;
+                     border-width:4px;
+                     width: 1000px;
+                     height: 70px;
+                     padding-top: 2px;
+                     padding-bottom:23px;
+
+
+              }
+     .cardone{
+         position: absolute;
+         margin-left: 20px;
+         top:200%;
+         left: -350%;
+     }
+     .cardtwo{
+         position: absolute;
+         margin-right: 20px;
+         top:200%;
+         left:400%;
+
+     }
+     .cardthree{
+      position: absolute;
+         margin-left: -33.5vw;
+         margin-bottom: 20px;
+         top: 750%;
+         left: -350%;
+
+     }
+     .cardfour{
+         position: absolute;
+         top: 750%;
+         left: 400%;
+         margin-left: -35vw;
+     }
+
+        label {
+          -webkit-perspective: 1000px;
+          perspective: 1000px;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          display: block;
+          width: 50px;
+          height: 50px;
+          position: absolute;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+        }
+
+        .card {
+          position: relative;
+          height: 30vh;
+          width: 35vw;
+          -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          -webkit-transition: all 600ms;
+          transition: all 600ms;
+          z-index: 20;
+            border-radius: 50px;
+        }
+
+        .card div {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          text-align: center;
+          line-height: 200px;
+          -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+          border-radius: 50px;
+        }
+
+        .card .back {
+
+          color: #FFF;
+          -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+             border-radius: 50px;
+        }
+
+        label:hover .card {
+          -webkit-transform: rotateX(20deg);
+          transform: rotateX(20deg);
+          box-shadow: 0 20px 20px rgba(50, 50, 50, 0.2);
+             border-radius: 50px;
+        }
+
+        input {
+          display: none;
+        }
+
+        :checked + .card {
+          transform: rotateX(180deg);
+          -webkit-transform: rotateX(180deg);
+        }
+
+        label:hover :checked + .card {
+          transform: rotateX(160deg);
+          -webkit-transform: rotateX(160deg);
+          box-shadow: 0 20px 20px rgba(255, 255, 255, 0.2);
+        }
+        .view {
+            float: left;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            cursor: default;
+             border-radius: 50px;
+            font-size: 2vw;
+
+        }
+        .view .mask, .view .content {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            overflow: hidden;
+            top: 0;
+            left: 0;
+             border-radius: 50px;
+        }
+        .view img {
+            display: block;
+            position: relative
+            border-radius: 50px;
+        }
+        .view h2 {
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            font-size: 17px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            margin: 20px 0 0 0
+        }
+        .view p {
+            font-family: Georgia, serif;
+            font-size: 1vw;
+            position: relative;
+            top:1.5vh;
+            color: #fff;
+            padding: 0px 20px 20px;
+            text-align: center;
+            line-height: 1.5vw;
+
+        }
+        .view-tenth img {
+            transform: scaleY(1);
+            transition: all 0.7s ease-in-out;
+        }
+        .view-tenth .mask {
+            background-color: rgba(255, 231, 179, 0.85);
+            transition: all 0.5s linear;
+
+            opacity: 0;
+        }
+        .view-tenth h2{
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+            background: transparent;
+            margin: 20px 40px 0px 40px;
+            transform: scale(0);
+            color: #333;
+            transition: all 0.5s linear;
+            opacity: 0;
+        }
+        .view-tenth p {
+            color: #333;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s linear;
+        }
+        .view-tenth a.info {
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s linear;
+        }
+        .view-tenth:hover img {
+            transform: scale(10);
+            opacity: 0;
+        }
+        .view-tenth:hover .mask {
+            opacity: 1;
+        }
+        .view-tenth:hover h2,
+        .view-tenth:hover p,
+        .view-tenth:hover a.info{
+            transform: scale(1);
+            opacity: 1;
+        }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    .bg {
+      width: 80vw;
+      height: 80vh;
+      top: 0;
+      left: 0;
+      z-index: 1;
+       filter: blur(80px);
+      transform: scale(1.2);
+    }
+
+    /*--------------------
+    Chat
+    --------------------*/
+    .chat {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      height: 85vh;
+      max-height: 900px;
+      z-index: 2;
+      overflow: hidden;
+      box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+      background: rgba(0, 0, 0, 0.24);
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
+
+    /*--------------------
+    Chat Title
+    --------------------*/
+    .chat-title {
+      flex: 0 1 45px;
+      position: relative;
+      z-index: 2;
+      background: rgba(0, 0, 0, 0.1);
+      color: #fff;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 10px 10px 10px 50px;
+    }
+    .chat-title h1, .chat-title h2 {
+      font-weight: normal;
+      font-size: 20px;
+      margin: 0;
+      padding: 0;
+    }
+    .chat-title h2 {
+      color: rgba(255, 255, 255, 0.46);
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+    .chat-title .avatar {
+      position: absolute;
+      z-index: 1;
+      top: 8px;
+      left: 9px;
+      border-radius: 30px;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+    .chat-title .avatar img {
+      width: 100%;
+        height: 100%;
+        position: center;
+    }
+
+    /*--------------------
+    Messages
+    --------------------*/
+    .messages {
+      flex: 1 1 auto;
+      color: rgba(255, 255, 255, 0.5);
+      overflow: hidden;
+      position: relative;
+      width: 90%;
+        height:100px;
+    }
+    .messages .messages-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .messages .message {
+      clear: both;
+      float: left;
+      padding: 6px 10px 7px;
+      border-radius: 10px 10px 10px 0;
+      background: rgba(0, 0, 0, 0.11);
+      margin: 8px 0;
+      font-size: 20px;
+      line-height: 1.4;
+      margin-left: 35px;
+      position: relative;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    }
+    .messages .message .timestamp {
+      position: absolute;
+      bottom: -15px;
+      font-size: 9px;
+      color: #fff;
+    }
+    .messages .message::before {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      border-top: 6px solid rgba(0, 0, 0, 0.3);
+      left: 0;
+      border-right: 7px solid transparent;
+    }
+    .messages .message .avatar {
+      position: absolute;
+      z-index: 1;
+      bottom: -15px;
+      left: -35px;
+      border-radius: 30px;
+      width: 30px;
+      height: 30px;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+      border: 2px solid rgba(255, 255, 255, 0.24);
+    }
+    .messages .message .avatar img {
+      width: 100%;
+        height: 100%;
+        position: center;
+    }
+    .messages .message.message-personal {
+      float: right;
+      color: #fff;
+      text-align: right;
+      background: linear-gradient(120deg, #248A52, #257287);
+      border-radius: 10px 10px 0 10px;
+    }
+    .messages .message.message-personal::before {
+      left: auto;
+      right: 0;
+      border-right: none;
+      border-left: 5px solid transparent;
+      border-top: 4px solid #257287;
+      bottom: -4px;
+    }
+    .messages .message:last-child {
+      margin-bottom: 30px;
+    }
+    .messages .message.new {
+      transform: scale(0);
+      transform-origin: 0 0;
+      -webkit-animation: bounce 500ms linear both;
+              animation: bounce 500ms linear both;
+        color: #fff;
+    }
+    .messages .message.loading::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.7);
+      z-index: 2;
+      margin-top: 4px;
+      -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+              animation: ball 0.45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
+      border: none;
+      -webkit-animation-delay: 0.15s;
+              animation-delay: 0.15s;
+    }
+    .messages .message.loading span {
+      display: block;
+      font-size: 0;
+      width: 20px;
+      height: 10px;
+      position: relative;
+    }
+    .messages .message.loading span::before {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      z-index: 2;
+      margin-top: 4px;
+      -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+              animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+      margin-left: -7px;
+    }
+    .messages .message.loading span::after {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      content: "";
+      display: block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      z-index: 2;
+      margin-top: 4px;
+      -webkit-animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+              animation: ball 0.45s cubic-bezier(0, 0, 0.15, 0.1) alternate infinite;
+      margin-left: 7px;
+      -webkit-animation-delay: 0.1s;
+              animation-delay: 0.1s;
+    }
+
+    /*--------------------
+    Message Box
+    --------------------*/
+    .message-box {
+      flex: 0 1 40px;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+        color: #fff;
+      position: relative;
+    }
+    .message-box .message-input {
+      background: none;
+      border: none;
+      outline: none !important;
+      resize: none;
+      color: #fff;
+      font-size: 18px;
+      height: 60px;
+      margin: 0;
+      padding-right: 20px;
+      width: 90vw;
+    }
+    .message-box textarea:focus:-webkit-placeholder {
+      color: transparent;
+    }
+    .message-box .message-submit {
+      position: absolute;
+      z-index: 1;
+      top: 25px;
+      right: 10px;
+      color: #000;
+      border: none;
+      font-size: 10px;
+      text-transform: uppercase;
+      line-height: 1;
+      padding: 6px 10px;
+      border-radius: 10px;
+      outline: none !important;
+      transition: background 0.2s ease;
+    }
+
+    /*--------------------
+    Custom Srollbar
+    --------------------*/
+    .mCSB_scrollTools {
+      margin: 1px -3px 1px 0;
+      opacity: 0;
+    }
+
+    .mCSB_inside > .mCSB_container {
+      margin-right: 0px;
+      padding: 0 10px;
+    }
+
+    .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+      background-color: rgba(0, 0, 0, 0.6) !important;
+    }
+
+    /*--------------------
+    Bounce
+    --------------------*/
+    @-webkit-keyframes bounce {
+      0% {
+        transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      4.7% {
+        transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      9.41% {
+        transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      14.11% {
+        transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      18.72% {
+        transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      24.32% {
+        transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      29.93% {
+        transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      35.54% {
+        transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      41.04% {
+        transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      52.15% {
+        transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      63.26% {
+        transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      85.49% {
+        transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      100% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+    }
+    @keyframes bounce {
+      0% {
+        transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      4.7% {
+        transform: matrix3d(0.45, 0, 0, 0, 0, 0.45, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      9.41% {
+        transform: matrix3d(0.883, 0, 0, 0, 0, 0.883, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      14.11% {
+        transform: matrix3d(1.141, 0, 0, 0, 0, 1.141, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      18.72% {
+        transform: matrix3d(1.212, 0, 0, 0, 0, 1.212, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      24.32% {
+        transform: matrix3d(1.151, 0, 0, 0, 0, 1.151, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      29.93% {
+        transform: matrix3d(1.048, 0, 0, 0, 0, 1.048, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      35.54% {
+        transform: matrix3d(0.979, 0, 0, 0, 0, 0.979, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      41.04% {
+        transform: matrix3d(0.961, 0, 0, 0, 0, 0.961, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      52.15% {
+        transform: matrix3d(0.991, 0, 0, 0, 0, 0.991, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      63.26% {
+        transform: matrix3d(1.007, 0, 0, 0, 0, 1.007, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      85.49% {
+        transform: matrix3d(0.999, 0, 0, 0, 0, 0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+      100% {
+        transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+      }
+    }
+    @-webkit-keyframes ball {
+      from {
+        transform: translateY(0) scaleY(0.8);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes ball {
+      from {
+        transform: translateY(0) scaleY(0.8);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+    #section01{
+        background: rgba(72, 217, 217, 0.1) center center / cover no-repeat !important;
+
+    }
+    #section03 {
+        background: rgba(52, 93, 122, 0.22) center center / cover no-repeat;
+
+    }
+    #section04{
+        background: rgba(115, 78, 82, 0.17) center center / cover no-repeat;
+
+    }
+    #section05 {
+        background: rgba(168, 211, 212, 0.22) center center / cover no-repeat;
+    }
+      .gradient-text {
+      /* Create the gradient. */
+       background-image: linear-gradient(
+            45deg,
+            black,
+            #e83f1c 16.666%,
+            #fd2a11 33.333%,
+            #ff7000 33.333%,
+            #ffb700 50%,
+            #758e08 50%,
+            #067d65 66.666%,
+            #005cff 66.666%,
+            #0055ff 83.333%,
+            rgb(255, 3, 228) 83.333%);
+
+      /* Set the background size and repeat properties. */
+      background-size: 100%;
+      background-repeat: repeat;
+
+      /* Use the text as a mask for the background. */
+      /* This will show the gradient as a text color rather than element bg. */
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+      /* Animate the text when loading the element. */
+        /* This animates it on page load and when hovering out. */
+        animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+          font-family: "Archivo Black", sans-serif;
+          font-size: 40px;
+          text-align: center;
+
+    }
+
+    .gradient-text:hover{
+        animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+    }
+
+
+    /* Move the background and make it smaller. */
+    /* Animation shown when entering the page and after the hover animation. */
+    @keyframes rainbow-text-simple-animation-rev {
+        0% {
+            background-size: 100%;
+        }
+        40% {
+            background-size: 150%;
+        }
+            80% {
+            background-size: 450%;
+        }
+        100% {
+            background-size: 650%;
+        }
+    }
+
+    /* Move the background and make it larger. */
+    /* Animation shown when hovering over the text. */
+    @keyframes rainbow-text-simple-animation {
+        0% {
+            background-size: 650%;
+        }
+        40%{
+            background-size: 450%;
+        }
+        80% {
+            background-size: 150%;
+        }
+        100% {
+            background-size: 100%;
+        }
+    }
+    .border{
+        padding: 15vh;
+        text-align: center;
+        font-size: 1.8vw;
+      }
+    .border p{
+        margin-top: 7vh;
+    }
+      .submit{
+        position: absolute;
+        bottom: 3vh;
+        font-size: 30px;
+        border-radius: 20%;
+        background: rgba(255, 183, 0, 0.29);
+        border: transparent;
+        padding: 15px;
+          left: 46vw;
+      }
+  </style>
+  <body
+    onload="getRandomImageUser(); getRandomImageFa(); getRandomImageFb(); getRandompro()"
+  >
+    <section id="section01" class="demo">
+      <a href="/aboutUs"> <button class="nav">关于我们</button></a>
+      <a
+        href="https://johnlark2050.wixsite.com/opendoor"
+        style="top: 30%; left: 43%; width: 240px; height: 183.5px"
+      >
+        <img
+          src="../static/Standard%20Logo%20Files/Original on Transparent.png"
+          width="100%"
+          height="100%"
+        />
+      </a>
+      <div class="gradient-text" style="position: relative; top: 55%; left: 1%">
+        <p>我们帮助学生形成富有意义和创新性的商业构想。</p>
+      </div>
+
+      <a href="#section02" style="left: 48%"><span></span>向下滑动</a>
+    </section>
+    <section id="section02" class="demo">
+      <div class="agora">
+        <p><b>Agora 1.0 </b></p>
+      </div>
+
+      <div class="gradient-text" style="position: relative; top: 25%; left: 1%">
+        <p>
+          集思广益，为您和周围的每一个人创造价值。
+        </p>
+      </div>
+      <div class="container" style="top: 15%">
+        <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>第一步</h3>
+            </div>
+          </div>
+          <div class="face face2">
+            <div class="content">
+              <p>
+                客户意味着您的目标市场，您应该有针对性地集思广益，讨论可能出现的问题及对应方案。在这一步中，您需要为客户发现尽可能多的实际问题。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>第二步</h3>
+            </div>
+          </div>
+          <div class="face face2">
+            <div class="content">
+              <p>
+                针对您的客户，您会得到一个关于解决方案的提示。在这一步中，您需要根据提示，为您的客户找到尽可能多的解决方案。
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card1">
+          <div class="face face1">
+            <div class="content">
+              <h3>第三步</h3>
+            </div>
+          </div>
+          <div class="face face2">
+            <div class="content">
+              <p>
+                在头脑风暴之后，您需要将问题和解决方案进行梳理。接下来，您要回答一些问题。这一步可以帮助完善您的商业构想，并为后续步骤做好准备。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a href="#section03" style="left: 40%; bottom: 8%"
+        ><span></span>这是你形成创业构思的练习过程
+      </a>
+      </a>
+    </section>
+    <section id="section03" class="demo">
+      <img
+        src="../static/mindmap1_chinese.png"
+        style="position: relative; top:5%; left: 2vw; max-width: 90vw"
+      />
+
+      <a href="#section04"><span></span>向下滑动</a>
+    </section>
+    <section id="section04" class="demo">
+      <div class="container">
+        <div>
+          <label>
+            <input type="checkbox" />
+            <div class="card cardone">
+              <div class="front">
+                <div class="view view-tenth">
+                 情景
+                  <div class="mask">
+                    <h2 style="line-height: 10px;">情景</h2>
+                    <p>
+                     结合中国特定的环境，帮助您练习如何在特定环境下构思新产品和服务。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="back">
+                <div id="randImageFeaturea"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" />
+            <div class="card cardtwo">
+              <div class="front">
+                <div class="view view-tenth">
+                  客户
+                  <div class="mask">
+                    <h2 style="line-height: 10px;"> 客户</h2>
+                    <p>
+                      这些在企业与政府中的个人和团体是您的潜在客户，他们需要您的专业知识、产品和服务来帮助他们解决问题
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="back">
+                <div id="randImageUser" class="card_size"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" />
+            <div class="card cardthree">
+              <div class="front">
+                <div class="view view-tenth">
+                 问题提示
+                  <div class="mask">
+                    <h2 style="line-height: 10px;">问题提示</h2>
+                    <p>
+                      与其他国家一样，中国也在五个主要领域面临着挑战。这张卡片向您提示了潜在客户需要应对的挑战。您也可以自己定义和引入您认为有必要解决的、潜在客户遇到的问题。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="back">
+                <div id="randImageS"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+
+        <div>
+          <label>
+            <input type="checkbox" />
+            <div class="card cardfour">
+              <div class="front">
+                <div class="view view-tenth">
+                  解决方案提示
+                  <div class="mask">
+                    <h2 style="line-height: 10px;"> 解决方案提示</h2>
+                    <p>
+                      这张卡片为您提示了解决问题的思路，让您可以使用它们来解决客户的问题。同时，您也可以自由地用自己独特的想法阐述和解决问题。
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="back">
+                <div id="randImageFb"></div>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <a href="#section05" onclick="save_cards()"><span></span>向下滑动</a>
+    </section>
+    <section id="section05" class="demo" translate="no">
+      <div class="chat">
+        <div class="chat-title">
+          <h1>项目负责人</h1>
+          <figure class="avatar">
+            <img src="../static/gaoruoyi1.jpg" />
+          </figure>
+        </div>
+        <div class="messages" style="width: 100%">
+          <div class="messages-content"></div>
+        </div>
+        <div class="message-box">
+          <textarea
+            type="text"
+            class="message-input"
+            id="input"
+            placeholder="输入信息..."
+          ></textarea>
+          <button type="submit" class="message-submit" onclick="save_input()">
+            发送
+          </button>
+        </div>
+      </div>
+      <div class="bg"></div>
+      <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-1b93190375e9ccc259df3a57c1abc0e64599724ae30d7ea4c6877eb615f89387.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script id="rendered-js">
+        var $messages = $(".messages-content"),
+          d,
+          h,
+          m,
+          i = 0;
+
+        $(window).load(function () {
+          $messages.mCustomScrollbar();
+          setTimeout(function () {
+            fakeMessage();
+          }, 100);
+        });
+
+        function updateScrollbar() {
+          $messages
+            .mCustomScrollbar("update")
+            .mCustomScrollbar("scrollTo", "bottom", {
+              scrollInertia: 10,
+              timeout: 0,
+            });
+        }
+
+        function setDate() {
+          d = new Date();
+          if (m != d.getMinutes()) {
+            m = d.getMinutes();
+            $(
+              '<div class="timestamp">' + d.getHours() + ":" + m + "</div>"
+            ).appendTo($(".message:last"));
+          }
+        }
+
+        function insertMessage() {
+          msg = $(".message-input").val();
+          if ($.trim(msg) == "") {
+            return false;
+          }
+          $('<div class="message message-personal">' + msg + "</div>")
+            .appendTo($(".mCSB_container"))
+            .addClass("new");
+          setDate();
+          $(".message-input").val(null);
+          updateScrollbar();
+          setTimeout(function () {
+            fakeMessage();
+          }, 1000 + Math.random() * 20 * 100);
+        }
+
+        $(".message-submit").click(function () {
+          insertMessage();
+        });
+
+        $(window).on("keydown", function (e) {
+          if (e.which == 13) {
+            insertMessage();
+            //save_input();
+            return false;
+          }
+        });
+
+        var Fake = [
+          "你好，我们刚刚获悉一个非常紧急而重要的项目。与其他团队成员讨论后，我们希望你可以领导你的团队成员完成整个项目的构思过程。 ",
+          "我的助理宇航已经将相关的客户资料和简要想法发给你了，是吗？",
+          "好的，可以让我们好好利用这个每周仅有一次的机会讨论几个关键问题。我已经准备了一些问题，希望你也能帮我看看。" +
+            "我们今天有一整天的时间，所以你不必急于给我答案，请认真思考回复我，因为我们需要得到高质量的答案。这个项目对我们来说意义很重大：如果我们完成得很好，我们可以吸引数百万的资金！" ,
+          "好，认为客户可能面临的长期和短期问题有哪些？",
+          "太棒了！我十分喜欢你提到的这些的问题。那么针对这些不同的问题，你分别有怎样的解决方案？",
+          " 是的，我认为很有道理。我们现在有了更多的选择！好的，让我们缩小范围，好吗？在我们列出的所有问题中，您认为哪一个需要优先考虑，为什么？ ",
+          "那么，你有什么想法？我们要如何解决客户的这个潜在问题？",
+          "好的，晓慧，我需要你接下来做几件事情。首先，请您提交一份报告，回答以下问题？在这之后，董事会将给你一份关于这个想法可行性的反馈报告！然后，我们将开始构建商业模型并实施您的想法！我已经迫不及待地想开始这方面的工作了！下周见！" ,
+          "期待下次见面",
+            "再见"
+        ];
+
+        function fakeMessage() {
+          if ($(".message-input").val() != "") {
+            return false;
+          }
+          $(
+            '<div class="message loading new"><figure class="avatar"><img src="../static/gaoruoyi1.jpg" /></figure><span></span></div>'
+          ).appendTo($(".mCSB_container"));
+          updateScrollbar();
+
+          setTimeout(function () {
+            $(".message.loading").remove();
+            $(
+              '<div class="message new"><figure class="avatar"><img src="../static/gaoruoyi1.jpg" /></figure>' +
+                Fake[i] +
+                "</div>"
+            )
+              .appendTo($(".mCSB_container"))
+              .addClass("new");
+            setDate();
+            updateScrollbar();
+            i++;
+          }, 1000 + Math.random() * 2);
+        }
+        //# sourceURL=pen.js
+      </script>
+
+      <a href="#section06" onclick="send_answer()"><span></span>向下滑动 </a>
+    </section>
+    <section id="section06">
+      <div class="border">
+        <p >
+          我们希望您欣赏自己的构思过程。构思过程是创业构想形成的第一阶段。
+            在这个阶段，您并不需要有多么完美的想法，所以请不要妄自褒贬自己。
+            它，仅仅是一个开始。我们设计了一些提示性问题来帮助您一步一步完善想法，让他变得更为可行。
+        </p>
+
+        <p>
+          Q1. 你们公司打算做什么？
+        </p>
+        <p>
+          （我们建议您尽可能简洁地回答此问题）
+        </p>
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer1" rows="3"></textarea>
+        <p >
+          Q2. 您所发现的问题对于客户而言是一个经常发生的问题吗？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer2" rows="3"></textarea>
+
+        <p>
+          Q3.您为什么会形成这样的想法来解决该问题？您是否找知道一些现成的解决方法？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer3" rows="3"></textarea>
+
+        <p>
+          Q4. 您的商业创意的新颖和独特之处是什么？能否想出一个您的客户已经采用的、具有替代性的解决方案？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer4" rows="3"></textarea>
+
+        <p >
+          Q5. 您的竞争者有哪些？谁会成为您的竞争者？您最担心的挑战有哪些？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer5" rows="3"></textarea>
+
+        <p >
+          Q6. 您将如何盈利？ （您的商业模式是什么？）
+        </p>
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer6" rows="3"></textarea>
+
+        <p>
+          Q7. 您打算如何吸引用户？如果您的商业构想不止一个依赖要素，您将如何克服相应的困难获得这些要素？
+        </p>
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer6" rows="3"></textarea>
+
+        <p>
+          Q8. 您将如何论证您的商业构想？如何证明该创意可以实现产品和市场间的完美匹配？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer7" rows="3"></textarea>
+
+        <p >
+          Q9. 如果您的商业构想被风险资本看中并获得相应注资，您会在多大程度上实现它？
+        </p>
+
+        <label for="exampleFormControlTextarea1" class="form-label"> </label>
+        <textarea class="form-control" id="answer8" rows="3"></textarea>
+
+
+        <button class="submit">提交</button>
+      </div>
+    </section>
+    <section id="thanks">
+      <div>
+        <h2>谢谢!</h2>
+        <p>
+          <a href="https://johnlark2050.wixsite.com/opendoor"
+            >&lt; 去往主页</a
+          >
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
