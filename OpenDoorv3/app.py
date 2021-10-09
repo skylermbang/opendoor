@@ -11,6 +11,7 @@ client=MongoClient('mongodb://test:test@localhost', 27017)
 ##MongoClient('localhost',27017)
 db=client.opendoor
 
+
 ## db.opendoor.insert_one({'name':'test','age':21} )
 ## testing the dbs
 
