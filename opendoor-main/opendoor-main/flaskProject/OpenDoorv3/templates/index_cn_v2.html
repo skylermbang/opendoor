@@ -172,10 +172,7 @@
             problem_give: problem,
             solution_give: solution,
           },
-          success: function (response) {
-            alert(response["msg"]);
-            window.location.reload();
-          },
+          success: function (response) {},
         });
       }
 
@@ -214,6 +211,36 @@
             input_give5: input5,
             input_give6: input6,
             input_give7: input7,
+          },
+          success: function (response) {},
+        });
+      }
+
+      function save_answer() {
+        let answer1 = document.getElementById("answer1").value;
+        let answer2 = document.getElementById("answer2").value;
+        let answer3 = document.getElementById("answer3").value;
+        let answer4 = document.getElementById("answer4").value;
+        let answer5 = document.getElementById("answer5").value;
+        let answer6 = document.getElementById("answer6").value;
+        let answer7 = document.getElementById("answer7").value;
+        let answer8 = document.getElementById("answer8").value;
+        let answer9 = document.getElementById("answer9").value;
+        console.log(answer1);
+
+        $.ajax({
+          type: "POST",
+          url: "/answers",
+          data: {
+            answer1_give: answer1,
+            answer2_give: answer2,
+            answer3_give: answer3,
+            answer4_give: answer4,
+            answer5_give: answer5,
+            answer6_give: answer6,
+            answer7_give: answer7,
+            answer8_give: answer8,
+            answer9_give: answer9,
           },
           success: function (response) {
             alert(response["msg"]);
@@ -1217,7 +1244,7 @@
     onload="getRandomImageUser(); getRandomImageFa(); getRandomImageFb(); getRandompro()"
   >
     <section id="section01" class="demo">
-      <a href="/aboutUs"> <button class="nav">关于我们</button></a>
+      <a href="/aboutcn"> <button class="nav">关于我们</button></a>
       <a
         href="https://johnlark2050.wixsite.com/opendoor"
         style="top: 30%; left: 43%; width: 240px; height: 183.5px"
@@ -1581,24 +1608,24 @@
           Q7. 您打算如何吸引用户？如果您的商业构想不止一个依赖要素，您将如何克服相应的困难获得这些要素？
         </p>
         <label for="exampleFormControlTextarea1" class="form-label"> </label>
-        <textarea class="form-control" id="answer6" rows="3"></textarea>
+        <textarea class="form-control" id="answer7" rows="3"></textarea>
 
         <p>
           Q8. 您将如何论证您的商业构想？如何证明该创意可以实现产品和市场间的完美匹配？
         </p>
 
         <label for="exampleFormControlTextarea1" class="form-label"> </label>
-        <textarea class="form-control" id="answer7" rows="3"></textarea>
+        <textarea class="form-control" id="answer8" rows="3"></textarea>
 
         <p >
           Q9. 如果您的商业构想被风险资本看中并获得相应注资，您会在多大程度上实现它？
         </p>
 
         <label for="exampleFormControlTextarea1" class="form-label"> </label>
-        <textarea class="form-control" id="answer8" rows="3"></textarea>
+        <textarea class="form-control" id="answer9" rows="3"></textarea>
 
-
-        <button class="submit">提交</button>
+        <button class="submit" onclick="save_answer()">提交</button>
+    
       </div>
     </section>
     <section id="thanks">

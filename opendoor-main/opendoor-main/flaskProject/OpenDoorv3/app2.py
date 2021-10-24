@@ -6,12 +6,11 @@ from flask_bootstrap import Bootstrap
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-
 ## for ec2 server
-client=MongoClient('mongodb://test:test@localhost', 27017)
+## client=MongoClient('mongodb://test:test@localhost', 27017)
 ##
 ##for local enviroment
-##client = MongoClient('localhost', 27017)
+client = MongoClient('localhost', 27017)
 db=client.opendoor
 
 
@@ -28,12 +27,9 @@ def cn():
     return render_template("index_cn_v2.html")
 
 @app.route('/aboutUs') 
-def aboutus_en():
+def f_infor():
     return render_template('aboutUs.html')
 
-@app.route('/aboutcn') 
-def aboutus_cn():
-    return render_template('aboutUs_cn.html')
 
 @app.route('/cards', methods=['POST'])
 def save_cards():
